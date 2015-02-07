@@ -1,0 +1,43 @@
+{ 
+  "arduino": "/dev/tty.usbmodem1421",
+  "_comment": "Each snd_file, mode pair corresponds to pin 0-7 on Arduino.  Pin parameters: hold = play while pin is low, stop when it becomes high.  fire = play on change from high to low.  Sound parameters should be the same for all input files",
+  "pins": [
+    {
+      "snd_file": "background.wav",
+      "mode": "hold"
+    },
+    {
+      "snd_file": "siren.wav",
+      "mode": "hold"
+    },
+    {
+      "snd_file": "sa1.wav",
+      "mode": "fire"
+    },
+    {
+      "snd_file": "sa2.wav",
+      "mode": "fire"
+    },
+    {
+      "snd_file": "sa3.wav",
+      "mode": "fire"
+    },
+    {
+      "snd_file": "sa4.wav",
+      "mode": "fire"
+    },
+    {
+      "snd_file": "sa5.wav",
+      "mode": "fire"
+    },
+    {
+      "snd_file": "sa6.wav",
+      "mode": "fire"
+    }
+  ],
+
+  "frequency": 44100,
+  "size": -16,
+  "channels": 2
+}
+
