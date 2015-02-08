@@ -1,0 +1,2 @@
+Convert audio file to 44100KHz stereo:
+ffmpeg -i s.wav -ar 44100 -ac 2 sa.wav
