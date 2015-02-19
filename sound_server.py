@@ -38,7 +38,17 @@ def handle_state(new_state):
       snd = pins['sounds'][idx]
 
       if pins['modes'][idx] == 'hold':
-        snd.play(-1) if (state_bit == ACTIVE) else snd.stop()
+        fname="pins/%d"%idx
+        try:
+          if (state_bit == ACTIVE):
+            open(fname, 'a').close() # touch file with name=pin number
+            snd.play(-1) 
+          else:
+            os.remove(fname)
+            snd.stop()
+        except:
+          logging.error(sys.exc_info()[0])
+
       else:
         if (state_bit == ACTIVE):
           snd.play()
@@ -56,7 +66,7 @@ def main():
   while True:
     instr = arduino.readline()
     logging.info("received: '%s'"%instr.rstrip())
-    instr = re.sub('[^\d]', '', instr).zfill(PINS)
+    instr = re.sub('[^01]', '', instr).zfill(PINS)
     handle_state(list(instr)[0:PINS])
         
 
