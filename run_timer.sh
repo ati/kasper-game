@@ -1,9 +1,11 @@
 #!/bin/bash
+ROOM_ID=19
 WATCH_FILE=pins/0
 FONT_NAME=epic
 OS=`uname -s`
 
 fig="figlet -w 80 -f $FONT_NAME"
+cd `dirname $0`
 
 function fdate()
 {
@@ -26,11 +28,15 @@ fdate $counter
 while sleep 1; do
 
   if [[ $is_running == 0 && -f $WATCH_FILE ]]; then
+    # start game
     counter=0
     is_running=1
+    ./start $ROOM_ID >> api_events.log
 
   elif [[ $is_running == 1 && ! -f $WATCH_FILE ]]; then
+    # stop game
     is_running=0
+    ./stop $ROOM_ID >> api_events.log
   fi
 
   if [[ $is_running == 1 ]]; then
