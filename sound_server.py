@@ -7,6 +7,7 @@ import json
 import serial
 import pygame
 import re
+import os
 
 PINS = 11
 ACTIVE = '0'
