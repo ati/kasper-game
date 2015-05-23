@@ -31,12 +31,16 @@ while sleep 1; do
     # start game
     counter=0
     is_running=1
+    echo "start" >> api_events.log
+    date >> api_events.log
     ./start $ROOM_ID >> api_events.log
 
   elif [[ $is_running == 1 && ! -f $WATCH_FILE ]]; then
     # stop game
     is_running=0
-    ./stop $ROOM_ID >> api_events.log
+    echo "stop" >> api_events.log
+    date >> api_events.log
+    # ./stop $ROOM_ID >> api_events.log
   fi
 
   if [[ $is_running == 1 ]]; then
